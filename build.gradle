@@ -17,6 +17,7 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+    agent // Add this line
 }
 
 repositories {
@@ -32,8 +33,11 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'org.mockito:mockito-inline:5.0.0' // Add this line
+    agent 'net.bytebuddy:byte-buddy-agent:1.15.11' // Add this line
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+    jvmArgs += '-javaagent:' + configurations.agent.singleFile.absolutePath // Update this line
 }

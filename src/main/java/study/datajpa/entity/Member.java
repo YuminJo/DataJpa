@@ -1,4 +1,4 @@
-﻿package study.datajpa.entity;
+package study.datajpa.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,4 +14,12 @@ public class Member {
     @GeneratedValue
     private Long id;
     private String username;
+
+    public Member(String memberA) {
+        this.username = memberA;
+    }
+
+    protected Member() {
+        
+    }
 }
